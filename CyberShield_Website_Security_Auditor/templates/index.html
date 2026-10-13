@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberShield | Website Security Auditor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-icon">◆</span><span>Cyber<span class="accent">Shield</span></span></div>
+      <div class="side-label">SECURITY TOOLS</div>
+      <div class="nav-item active">▦ &nbsp; Website Auditor</div>
+      <div class="nav-item muted">◈ &nbsp; Security Headers</div>
+      <div class="nav-item muted">⌁ &nbsp; Audit History <small>Demo</small></div>
+      <div class="side-bottom">
+        <div class="status-dot"></div>
+        <div><b>Local scanner</b><p>Ready for audit</p></div>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><span class="eyebrow">DEFENSIVE SECURITY / WEB AUDIT</span><h1>Website Security Auditor</h1></div>
+        <div class="top-chip"><span class="status-dot"></span> SYSTEM READY</div>
+      </header>
+      <section class="intro">
+        <div>
+          <h2>Know your website's security posture.</h2>
+          <p>Review HTTPS usage, common security headers, and exposed server details.</p>
+        </div>
+        <div class="shield-art" aria-hidden="true">⬡<span>✓</span></div>
+      </section>
+      <section class="panel scan-panel">
+        <div class="panel-heading"><div><span class="section-index">01</span><b>Start a new audit</b></div><span class="tiny-label">AUTHORIZED TARGETS ONLY</span></div>
+        <form id="audit-form">
+          <label for="url">Website URL</label>
+          <div class="url-row">
+            <div class="input-wrap"><span>⌕</span><input id="url" name="url" type="text" placeholder="https://your-domain.com" autocomplete="url" required></div>
+            <button id="scan-btn" type="submit">Run audit <span>↗</span></button>
+          </div>
+          <p class="hint">Only audit sites you own or have explicit permission to test. Private and local network addresses are blocked.</p>
+        </form>
+        <div id="error" class="error" role="alert" hidden></div>
+      </section>
+      <section id="results" hidden>
+        <div class="results-title"><div><span class="section-index">02</span><b>Audit overview</b></div><button id="download-btn" class="secondary-btn">↓ Export JSON</button></div>
+        <div class="metrics">
+          <article class="metric score-card"><div class="metric-label">SECURITY SCORE</div><div class="score-line"><strong id="score">--</strong><span>/100</span></div><div class="meter"><div id="meter-fill"></div></div><p id="score-caption">Based on observed configuration</p></article>
+          <article class="metric"><div class="metric-label">HTTP STATUS</div><strong id="http-status">--</strong><p>Response status code</p></article>
+          <article class="metric"><div class="metric-label">HIGH FINDINGS</div><strong id="high-count" class="danger">0</strong><p>Items to review first</p></article>
+          <article class="metric"><div class="metric-label">CHECKS PASSED</div><strong id="pass-count" class="good">0</strong><p>Headers / checks present</p></article>
+        </div>
+        <div class="panel findings-panel">
+          <div class="panel-heading"><div><span class="section-index">03</span><b>Findings & recommendations</b></div><span id="target-host" class="tiny-label"></span></div>
+          <div class="table-wrap"><table><thead><tr><th>CHECK</th><th>SEVERITY</th><th>OBSERVATION</th><th>RECOMMENDATION</th></tr></thead><tbody id="findings-body"></tbody></table></div>
+          <p class="disclaimer" id="note"></p>
+        </div>
+      </section>
+      <footer><span>CYBERSHIELD • STUDENT SECURITY PROJECT</span><span>DEFENSIVE TESTING ONLY</span></footer>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
